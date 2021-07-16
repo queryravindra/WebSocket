@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSockets</title>
+</head>
+<body>
+
+    <h1>WebSockets Basics</h1>
+
+
+    <script>
+        const ws = new WebSocket("ws://localhost:8082");
+
+        // listening to open(mailny when we are connected to server side) events
+        ws.addEventListener("open", () => {
+            console.log("We are connected!");
+
+            ws.send("Hey, What's youe name?");
+        });
+
+        // ws.addEventListener("message", e => {
+        //     console.log(e.data);
+        // });
+        ws.addEventListener("message", ({ data }) => {
+            console.log(data);
+        });
+    </script>
+</body>
+</html>
